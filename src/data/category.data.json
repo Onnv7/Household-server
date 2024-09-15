@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Ghế nhựa",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/36/63/3a/36633a79cf9d92a7184153da88d33d03.jpg"
+  },
+  {
+    "name": "Quạt gió",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/21/0c/b6/210cb6b2182c36149490c3dc8575a0a7.jpg"
+  },
+  {
+    "name": "Bình ngâm rượu",
+    "status": "VISIBLE",
+    "imageUrl": "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+  },
+  {
+    "name": "Đèn",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/db/9f/3e/db9f3ea00e8d662b286d0f9b9298b6e6.jpg"
+  },
+  {
+    "name": "Bình nước giữ nhiệt",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/e2/75/41/e2754152daa06db2a22e1b539af1f8c1.jpg"
+  },
+  {
+    "name": "Kệ inox",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/736x/8b/c3/02/8bc302195a9ec2be148412f0b340736f.jpg"
+  },
+  {
+    "name": "Mền, gối ngủ",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/b5/53/a3/b553a3857d4b1c5ff46b524bfea86f11.jpg"
+  },
+  {
+    "name": "Thảm trải sàn",
+    "status": "VISIBLE",
+    "imageUrl": "https://i.pinimg.com/564x/70/10/fe/7010fef51db49882ec631eb79d50fd40.jpg"
+  }
+]

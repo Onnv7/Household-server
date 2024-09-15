@@ -1,0 +1,446 @@
+[
+  {
+    "name": "Ghế nhựa cao cấp",
+    "price": 15000,
+    "description": "Ghế nhựa bền, thiết kế hiện đại, dễ dàng di chuyển.",
+    "status": "AVAILABLE",
+    "category": 1,
+    "summary": "Ghế nhựa hiện đại, dễ di chuyển.",
+    "productImageList": [
+      "https://i.pinimg.com/564x/21/0c/b6/210cb6b2182c36149490c3dc8575a0a7.jpg",
+      "https://i.pinimg.com/564x/21/0c/b6/210cb6b2182c36149490c3dc8575a0a7.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "GHE001",
+        "name": "Ghế nhựa xanh",
+        "price": 15000
+      },
+      {
+        "sku": "GHE002",
+        "name": "Ghế nhựa đỏ",
+        "price": 16000
+      }
+    ]
+  },
+  {
+    "name": "Quạt gió đứng",
+    "price": 35000,
+    "description": "Quạt gió mát lạnh, tiết kiệm điện năng.",
+    "status": "AVAILABLE",
+    "category": 2,
+    "summary": "Quạt đứng, mát lạnh, tiết kiệm điện.",
+    "productImageList": [
+      "https://i.pinimg.com/564x/21/0c/b6/210cb6b2182c36149490c3dc8575a0a7.jpg",
+      "https://i.pinimg.com/564x/21/0c/b6/210cb6b2182c36149490c3dc8575a0a7.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "QUAT001",
+        "name": "Quạt gió trắng",
+        "price": 35000
+      },
+      {
+        "sku": "QUAT002",
+        "name": "Quạt gió đen",
+        "price": 37000
+      }
+    ]
+  },
+  {
+    "name": "Bình ngâm rượu thủy tinh",
+    "price": 25000,
+    "description": "Bình ngâm rượu chất liệu thủy tinh, dung tích lớn.",
+    "status": "AVAILABLE",
+    "category": 3,
+    "summary": "Bình thủy tinh ngâm rượu, dung tích lớn.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "BINH001",
+        "name": "Bình ngâm rượu 5L",
+        "price": 25000
+      },
+      {
+        "sku": "BINH002",
+        "name": "Bình ngâm rượu 10L",
+        "price": 30000
+      }
+    ]
+  },
+  {
+    "name": "Đèn LED trang trí",
+    "price": 12000,
+    "description": "Đèn LED trang trí, ánh sáng êm dịu, tiết kiệm điện.",
+    "status": "AVAILABLE",
+    "category": 4,
+    "summary": "Đèn LED trang trí, tiết kiệm điện.",
+    "productImageList": [
+      "https://i.pinimg.com/564x/db/9f/3e/db9f3ea00e8d662b286d0f9b9298b6e6.jpg",
+      "https://i.pinimg.com/564x/a4/8f/63/a48f6361a6d6663b8732755a4a01ae32.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "DEN001",
+        "name": "Đèn LED trắng",
+        "price": 12000
+      },
+      {
+        "sku": "DEN002",
+        "name": "Đèn LED vàng",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "name": "Bình nước giữ nhiệt inox",
+    "price": 18000,
+    "description": "Bình nước giữ nhiệt cao cấp, giữ nhiệt tốt.",
+    "status": "AVAILABLE",
+    "category": 5,
+    "summary": "Bình giữ nhiệt inox, chất lượng cao.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "BINHN001",
+        "name": "Bình nước xanh",
+        "price": 18000
+      },
+      {
+        "sku": "BINHN002",
+        "name": "Bình nước đỏ",
+        "price": 20000
+      }
+    ]
+  },
+  {
+    "name": "Kệ inox đa năng",
+    "price": 30000,
+    "description": "Kệ inox chắc chắn, thiết kế đa năng.",
+    "status": "AVAILABLE",
+    "category": 6,
+    "summary": "Kệ inox đa năng, thiết kế chắc chắn.",
+    "productImageList": [
+      "https://i.pinimg.com/736x/8b/c3/02/8bc302195a9ec2be148412f0b340736f.jpg",
+      "https://i.pinimg.com/736x/8b/c3/02/8bc302195a9ec2be148412f0b340736f.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "KE001",
+        "name": "Kệ inox 3 tầng",
+        "price": 30000
+      },
+      {
+        "sku": "KE002",
+        "name": "Kệ inox 4 tầng",
+        "price": 35000
+      }
+    ]
+  },
+  {
+    "name": "Mền gối cao cấp",
+    "price": 22000,
+    "description": "Mền gối mềm mại, dễ chịu, chất liệu cao cấp.",
+    "status": "AVAILABLE",
+    "category": 7,
+    "summary": "Mền gối mềm mại, chất liệu cao cấp.",
+    "productImageList": [
+      "https://i.pinimg.com/564x/b5/53/a3/b553a3857d4b1c5ff46b524bfea86f11.jpg",
+      "https://i.pinimg.com/736x/8b/c3/02/8bc302195a9ec2be148412f0b340736f.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "MEN001",
+        "name": "Mền gối màu xanh",
+        "price": 22000
+      },
+      {
+        "sku": "MEN002",
+        "name": "Mền gối màu hồng",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "name": "Thảm trải sàn cao cấp",
+    "price": 28000,
+    "description": "Thảm trải sàn sang trọng, dễ vệ sinh.",
+    "status": "AVAILABLE",
+    "category": 8,
+    "summary": "Thảm trải sàn sang trọng, dễ vệ sinh.",
+    "productImageList": [
+      "https://i.pinimg.com/564x/70/10/fe/7010fef51db49882ec631eb79d50fd40.jpg",
+      "https://i.pinimg.com/736x/8b/c3/02/8bc302195a9ec2be148412f0b340736f.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "THAM001",
+        "name": "Thảm trải sàn xanh",
+        "price": 28000
+      },
+      {
+        "sku": "THAM002",
+        "name": "Thảm trải sàn nâu",
+        "price": 32000
+      }
+    ]
+  },
+  {
+    "name": "Ghế nhựa tiện lợi",
+    "price": 14000,
+    "description": "Ghế nhựa bền đẹp, dễ lau chùi, thích hợp cho cả trong nhà và ngoài trời.",
+    "status": "AVAILABLE",
+    "category": 1,
+    "summary": "Ghế nhựa tiện lợi, dễ lau chùi.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "GHE003",
+        "name": "Ghế nhựa xanh",
+        "price": 14000
+      },
+      {
+        "sku": "GHE004",
+        "name": "Ghế nhựa vàng",
+        "price": 15000
+      }
+    ]
+  },
+  {
+    "name": "Quạt trần hiện đại",
+    "price": 45000,
+    "description": "Quạt trần thiết kế hiện đại, tiết kiệm năng lượng, làm mát hiệu quả.",
+    "status": "AVAILABLE",
+    "category": 2,
+    "summary": "Quạt trần hiện đại, tiết kiệm năng lượng.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "QUAT003",
+        "name": "Quạt trần trắng",
+        "price": 45000
+      },
+      {
+        "sku": "QUAT004",
+        "name": "Quạt trần đen",
+        "price": 47000
+      }
+    ]
+  },
+  {
+    "name": "Ghế nhựa ngoài trời",
+    "price": 16000,
+    "description": "Ghế nhựa ngoài trời chịu được nắng mưa, bền đẹp.",
+    "status": "AVAILABLE",
+    "category": 1,
+    "summary": "Ghế nhựa bền đẹp, chống nước.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "GHE005",
+        "name": "Ghế nhựa đen",
+        "price": 16000
+      },
+      {
+        "sku": "GHE006",
+        "name": "Ghế nhựa trắng",
+        "price": 17000
+      }
+    ]
+  },
+  {
+    "name": "Quạt gió để bàn",
+    "price": 25000,
+    "description": "Quạt gió nhỏ gọn, tiện lợi, thích hợp cho bàn làm việc.",
+    "status": "AVAILABLE",
+    "category": 2,
+    "summary": "Quạt gió để bàn, nhỏ gọn, tiện lợi.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "QUAT005",
+        "name": "Quạt gió xanh",
+        "price": 25000
+      },
+      {
+        "sku": "QUAT006",
+        "name": "Quạt gió hồng",
+        "price": 26000
+      }
+    ]
+  },
+  {
+    "name": "Bình ngâm rượu nhỏ",
+    "price": 20000,
+    "description": "Bình ngâm rượu nhỏ gọn, thích hợp cho không gian nhỏ.",
+    "status": "AVAILABLE",
+    "category": 3,
+    "summary": "Bình ngâm rượu nhỏ gọn, tiện lợi.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "BINH003",
+        "name": "Bình ngâm rượu 2L",
+        "price": 20000
+      },
+      {
+        "sku": "BINH004",
+        "name": "Bình ngâm rượu 3L",
+        "price": 25000
+      }
+    ]
+  },
+  {
+    "name": "Đèn LED đọc sách",
+    "price": 18000,
+    "description": "Đèn LED nhỏ gọn, ánh sáng dịu nhẹ, thích hợp để đọc sách.",
+    "status": "AVAILABLE",
+    "category": 4,
+    "summary": "Đèn LED đọc sách, ánh sáng dịu.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "DEN003",
+        "name": "Đèn LED đỏ",
+        "price": 18000
+      },
+      {
+        "sku": "DEN004",
+        "name": "Đèn LED xanh",
+        "price": 19000
+      }
+    ]
+  },
+  {
+    "name": "Bình nước giữ nhiệt di động",
+    "price": 22000,
+    "description": "Bình nước giữ nhiệt nhỏ gọn, tiện lợi cho du lịch.",
+    "status": "AVAILABLE",
+    "category": 5,
+    "summary": "Bình giữ nhiệt di động, tiện lợi.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "BINHN003",
+        "name": "Bình nước đen",
+        "price": 22000
+      },
+      {
+        "sku": "BINHN004",
+        "name": "Bình nước bạc",
+        "price": 24000
+      }
+    ]
+  },
+  {
+    "name": "Kệ inox phòng tắm",
+    "price": 32000,
+    "description": "Kệ inox nhỏ gọn, phù hợp cho phòng tắm, chống rỉ sét.",
+    "status": "AVAILABLE",
+    "category": 6,
+    "summary": "Kệ inox phòng tắm, chống rỉ sét.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "KE003",
+        "name": "Kệ inox 2 tầng",
+        "price": 32000
+      },
+      {
+        "sku": "KE004",
+        "name": "Kệ inox 3 tầng",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "name": "Mền gối lông vũ",
+    "price": 25000,
+    "description": "Mền gối lông vũ êm ái, tạo cảm giác dễ chịu khi ngủ.",
+    "status": "AVAILABLE",
+    "category": 7,
+    "summary": "Mền gối lông vũ, êm ái, dễ chịu.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "MEN003",
+        "name": "Mền gối xám",
+        "price": 25000
+      },
+      {
+        "sku": "MEN004",
+        "name": "Mền gối trắng",
+        "price": 28000
+      }
+    ]
+  },
+  {
+    "name": "Thảm trải sàn văn phòng",
+    "price": 34000,
+    "description": "Thảm trải sàn cho văn phòng, dễ vệ sinh và bền.",
+    "status": "AVAILABLE",
+    "category": 8,
+    "summary": "Thảm trải sàn văn phòng, dễ vệ sinh.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ],
+    "productSKUList": [
+      {
+        "sku": "THAM003",
+        "name": "Thảm trải sàn xanh",
+        "price": 34000
+      },
+      {
+        "sku": "THAM004",
+        "name": "Thảm trải sàn đỏ",
+        "price": 36000
+      }
+    ]
+  },
+  {
+    "name": "Thảm trải sàn thanh lý",
+    "price": 20000,
+    "description": "Thảm trải sàn cho văn phòng, dễ vệ sinh và bền.",
+    "status": "AVAILABLE",
+    "category": 8,
+    "summary": "Thảm trải sàn văn phòng, dễ vệ sinh.",
+    "productImageList": [
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg",
+      "https://img.lazcdn.com/g/p/e375eb6a356d892c587d24774aad886e.jpg_720x720q80.jpg"
+    ]
+  }
+]

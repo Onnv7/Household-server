@@ -1,24 +1,29 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { JwtSecretRequestType } from '@nestjs/jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { AuthContextService } from '../../service/auth-context.service';
+import { env } from '../../config/env-configuration.config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   private readonly logger = new Logger(JwtStrategy.name);
-  constructor(private readonly configService: ConfigService) {
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly authContextService: AuthContextService,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('ACCESS_TOKEN_SECRET'),
+      secretOrKey: env.JWT_ACCESS_TOKEN_SECRET,
     });
   }
 
   async validate(payload: any) {
+    this.authContextService.setUser({ id: payload.id, email: payload.email, role: payload.role });
     return {
       id: payload.id,
-      username: payload.username,
+      email: payload.email,
       role: payload.role,
     };
   }

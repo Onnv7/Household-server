@@ -11,3 +11,8 @@ export class LoginUserResponse {
   @ApiProperty()
   accessToken: string;
 }
+
+export class RefreshTokenResponse {
+  @ApiProperty()
+  accessToken: string;
+}

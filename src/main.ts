@@ -1,17 +1,32 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
+import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { TransformInterceptor } from './common/interceptor/transform.interceptor';
-import {
-  CustomExceptionHandlerFilter,
-  ExceptionHandlerFilter,
-} from './common/filter/exception.filter';
+import { CustomExceptionHandlerFilter, ExceptionHandlerFilter } from './common/filter/exception.filter';
 import { JwtGuard } from './common/guard/jwt.guard';
 import { RoleGuard } from './common/guard/role.guard';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { initializeTransactionalContext } from 'typeorm-transactional';
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  initializeTransactionalContext();
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    abortOnError: true,
+  });
+
+  // set cookie
+  app.use(cookieParser());
+
+  // set request body
+  app.use(bodyParser.urlencoded({ extended: true }));
+  // Enable CORS with default settings
+  app.enableCors({
+    origin: 'http://localhost:3006', // Thay thế bằng domain của bạn
+    credentials: true, // Cho phép gửi thông tin xác thực như cookies
+  });
 
   app.setGlobalPrefix('/api');
 
@@ -23,13 +38,11 @@ async function bootstrap() {
     }),
   );
 
+  // set interceptor
   app.useGlobalInterceptors(new TransformInterceptor());
 
   // apply theo thu tu tu duoi len tren -> cha o đầu, con ở sau
-  const filters = [
-    new ExceptionHandlerFilter(),
-    new CustomExceptionHandlerFilter(),
-  ];
+  const filters = [new ExceptionHandlerFilter(), new CustomExceptionHandlerFilter()];
   app.useGlobalFilters(...filters);
 
   const reflector = app.get(Reflector);
@@ -49,7 +62,7 @@ async function bootstrap() {
         description: 'Enter JWT token',
         in: 'header',
       },
-      'access-token', // This name here is important for matching up with @ApiBearerAuth() in your controller!
+      'access-token',
     )
     .setVersion('1.0')
     .build();

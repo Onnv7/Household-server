@@ -1,8 +1,7 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import {
-  TypeOrmModuleAsyncOptions,
-  TypeOrmModuleOptions,
-} from '@nestjs/typeorm';
+import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
+import { addTransactionalDataSource } from 'typeorm-transactional';
 
 export default class TypeOrmConfig {
   static getOrmConfig(configService: ConfigService): TypeOrmModuleOptions {
@@ -16,16 +15,23 @@ export default class TypeOrmConfig {
       // entities: [__dirname + '/../**/*.entity{.ts,.js}'], //[UserEntity], // [__dirname + '/../**/*.entity{.ts,.js}']
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
-      // dropSchema: true,
+      // logging: true,
+      dropSchema: false,
     };
   }
 }
 
 export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
-  useFactory: async (
-    configService: ConfigService,
-  ): Promise<TypeOrmModuleOptions> => TypeOrmConfig.getOrmConfig(configService),
+  useFactory: async (configService: ConfigService): Promise<TypeOrmModuleOptions> =>
+    TypeOrmConfig.getOrmConfig(configService),
+
+  async dataSourceFactory(options) {
+    if (!options) {
+      throw new Error('Invalid options passed');
+    }
+
+    return addTransactionalDataSource(new DataSource(options));
+  },
   inject: [ConfigService],
 };

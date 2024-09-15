@@ -4,7 +4,7 @@ import { MerchantEntity } from '../../entity/merchant.entity';
 import { Repository } from 'typeorm';
 import { MerchantLoginRequest } from './payload/merchant-request.payload';
 import { MerchantLoginResponse } from './payload/merchant-response.payload';
-import { CustomError } from '../../common/model/response-api';
+import { AppError } from '../../common/model/response-api';
 import { ErrorResponseData } from '../../constant/response.constant';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
@@ -16,17 +16,12 @@ export class MerchantService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async merchantLogin(
-    body: MerchantLoginRequest,
-  ): Promise<MerchantLoginResponse> {
+  async merchantLogin(body: MerchantLoginRequest): Promise<MerchantLoginResponse> {
     const merchantEntity = await this.merchantRepository.findOneBy({
       username: body.username,
     });
 
-    if (
-      merchantEntity &&
-      (await bcrypt.compare(body.password, merchantEntity.password))
-    ) {
+    if (merchantEntity && (await bcrypt.compare(body.password, merchantEntity.password))) {
       const payload = {
         id: merchantEntity.id,
         username: merchantEntity.username,
@@ -37,6 +32,6 @@ export class MerchantService {
         accessToken: this.jwtService.sign(payload),
       } as MerchantLoginResponse;
     }
-    throw new CustomError(ErrorResponseData.CREDENTIAL_WRONG);
+    throw new AppError(ErrorResponseData.CREDENTIAL_WRONG);
   }
 }

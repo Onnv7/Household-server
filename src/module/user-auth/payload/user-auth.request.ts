@@ -1,16 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-import { IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength, ValidateIf } from 'class-validator';
 import { SwaggerConstant } from '../../../constant/swagger.constant';
 
 export class RegisterUserRequest {
   @ApiProperty({
-    example: SwaggerConstant.USERNAME_EX,
+    example: SwaggerConstant.EMAIL_EX,
   })
   @IsNotEmpty()
-  @IsString()
-  @MinLength(6)
-  readonly username: string;
+  @IsEmail()
+  readonly email: string;
 
   @ApiProperty({
     example: SwaggerConstant.PASSWORD_EX,
@@ -33,16 +32,23 @@ export class RegisterUserRequest {
   @IsNotEmpty()
   @IsString()
   readonly lastName: string;
+
+  @ApiProperty({
+    example: SwaggerConstant.TOKEN_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly token: string;
 }
 
 export class LoginUserRequest {
   @ApiProperty({
-    example: SwaggerConstant.USERNAME_EX,
+    example: SwaggerConstant.EMAIL_EX,
   })
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
-  readonly username: string;
+  readonly email: string;
 
   @ApiProperty({
     example: SwaggerConstant.PASSWORD_EX,
@@ -51,4 +57,89 @@ export class LoginUserRequest {
   @IsString()
   @MinLength(6)
   readonly password: string;
+}
+export class LoginWithZaloRequest {
+  @ApiProperty({
+    example: SwaggerConstant.TOKEN_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly code: string;
+
+  @ApiProperty({
+    example: SwaggerConstant.TOKEN_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly codeVerifier: string;
+}
+
+export class AuthGoogleRequest {
+  @ApiProperty({
+    example: SwaggerConstant.TOKEN_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly idToken: string;
+}
+
+export class SendCodeRequest {
+  @ApiProperty({
+    example: SwaggerConstant.EMAIL_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly email: string;
+}
+
+export class VerifyEmailCodeRequest {
+  @ApiProperty({
+    example: SwaggerConstant.EMAIL_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly email: string;
+
+  @ApiProperty({
+    example: SwaggerConstant.TOKEN_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly token: string;
+}
+
+export class UpdatePasswordRequest {
+  @ApiProperty({
+    example: SwaggerConstant.PASSWORD_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(6)
+  readonly oldPassword: string;
+
+  @ApiProperty({
+    example: SwaggerConstant.PASSWORD_EX,
+  })
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(6)
+  readonly newPassword: string;
+}
+
+export class GoogleAuthHeaders {
+  @ApiProperty({
+    required: false,
+    example: SwaggerConstant.PASSWORD_EX,
+  })
+  @IsOptional()
+  @IsString()
+  code?: string;
+
+  @ApiProperty({
+    required: false,
+    example: SwaggerConstant.PASSWORD_EX,
+  })
+  @IsOptional()
+  @IsString()
+  idToken?: string;
 }

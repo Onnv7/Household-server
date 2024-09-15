@@ -4,7 +4,9 @@ import { MerchantService } from './merchant.service';
 import { ResponseAPI } from '../../common/model/response-api';
 import { MerchantLoginRequest } from './payload/merchant-request.payload';
 import { ResponseMessage } from '../../constant/response.constant';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('MERCHANT')
 @Controller('merchant')
 export class MerchantController extends BaseController {
   constructor(private readonly merchantService: MerchantService) {

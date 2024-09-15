@@ -8,7 +8,7 @@ export class ResponseAPI<T = any> {
   data?: T;
 }
 
-export class CustomError extends Error {
+export class AppError extends Error {
   constructor(errorData: ErrorData, devMessage?: string) {
     super(errorData.errorMessage);
     this.errorData = errorData;

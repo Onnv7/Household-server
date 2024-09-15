@@ -11,21 +11,21 @@ export const SwaggerConstant = {
   ADMIN_USERNAME_EX: 'admin',
   ADMIN_PASSWORD_EX: '112233',
   USERNAME_EX: 'nva611',
+  EMAIL_EX: 'onnv7.dev@gmail.com',
   PASSWORD_EX: '112233',
   FIRST_NAME_EX: 'An',
   LAST_NAME_EX: 'Nguyen',
+  TOKEN_EX: '112233',
 
   PRODUCT_ID_EX: '654c8abada1d8574f6cbd530',
   PRODUCT_DESC_EX: 'Product description',
-  PRODUCT_IMAGE_EX:
-    'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
+  PRODUCT_IMAGE_EX: 'https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG',
   PRODUCT_NAME_EX: 'Product name',
   PRICE_EX: '6000',
   QUANTITY_EX: '6000',
 
   CATEGORY_NAME_EX: 'Category name',
-  CATEGORY_IMAGE_EX:
-    'https://cdn.britannica.com/94/193794-050-0FB7060D/Adidas-logo.jpg',
+  CATEGORY_IMAGE_EX: 'https://cdn.britannica.com/94/193794-050-0FB7060D/Adidas-logo.jpg',
 
   OBJECT_ID_EX: '6546436a812191262e06c58a',
   ARRAY_OBJECT_ID_EX: ['6546436a812191262e06c58a', '6546436a812191262e06c53a'],

@@ -1,5 +1,6 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Role } from '../common/enum';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Gender, Role } from '../common/enum';
+import { OrderBillEntity } from './order/order-bill.entity';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -13,8 +14,14 @@ export class UserEntity {
   })
   role: Role;
 
-  @Column({ name: 'username', unique: true })
-  username: string;
+  @Column({ name: 'email', unique: true })
+  email: string;
+
+  @Column({ name: 'avatarUrl', nullable: true })
+  avatarUrl: string;
+
+  @Column({ name: 'gender', type: 'enum', enum: Gender, default: Gender.MALE.toString() })
+  gender: Gender;
 
   @Column({ name: 'password' })
   password: string;
@@ -25,6 +32,16 @@ export class UserEntity {
   @Column({ name: 'last_name' })
   lastName: string;
 
-  @Column({ name: 'phone_number', nullable: true })
-  phoneNumber: string;
+  // @Column({ name: 'phone_number', nullable: true })
+  // phoneNumber: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
+
+  // =================================================================
+  @OneToMany(() => OrderBillEntity, (orderBill) => orderBill.user)
+  orderBillList: OrderBillEntity[];
 }

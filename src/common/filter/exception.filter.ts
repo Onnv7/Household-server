@@ -1,16 +1,16 @@
-import {
-  ArgumentsHost,
-  BadRequestException,
-  Catch,
-  ExceptionFilter,
-} from '@nestjs/common';
+import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, Logger } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { CustomError } from '../model/response-api';
+import { AppError } from '../model/response-api';
 import { ErrorCode, HttpCodeMessage } from '../../constant/response.constant';
 
-@Catch(CustomError)
+const logger = new Logger('ExceptionHandler');
+@Catch(AppError)
 export class CustomExceptionHandlerFilter implements ExceptionFilter {
-  catch(exception: CustomError, host: ArgumentsHost) {
+  catch(exception: AppError, host: ArgumentsHost) {
+    console.log('🚀 ~ CustomExceptionHandlerFilter ~ exception:', exception);
+    logger.log(exception.stack);
+    logger.log(exception.message);
+
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
@@ -28,7 +28,8 @@ export class CustomExceptionHandlerFilter implements ExceptionFilter {
 @Catch(Error)
 export class ExceptionHandlerFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost) {
-    console.log(exception);
+    console.log('🚀 ~ ExceptionHandlerFilter ~ exception:', exception);
+    logger.log(exception.stack);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const message = exception.message;
@@ -37,10 +38,7 @@ export class ExceptionHandlerFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       error: { errorCode: ErrorCode.SERVER_ERROR, errorMessage: message },
       devError: {
-        message:
-          exception instanceof BadRequestException
-            ? exception.getResponse()
-            : exception.message,
+        message: exception instanceof BadRequestException ? exception.getResponse() : exception.message,
       },
     });
   }
