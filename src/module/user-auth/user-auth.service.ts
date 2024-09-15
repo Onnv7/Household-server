@@ -208,7 +208,8 @@ export class UserAuthService {
 
   async refreshToken(refreshToken: string): Promise<RefreshTokenResponse & { refreshToken: string }> {
     console.log('🚀 ~ UserAuthService ~ refreshToken ~ refreshToken:', refreshToken);
-    const { id } = this.authContextService.getUser();
+    // const { id } = this.authContextService.getUser();
+    const { id } = this.tokenAuthService.decode(refreshToken);
     const tokenData = await this.redis.hget(`refreshToken:${id}`, refreshToken);
 
     if (tokenData != null && !Number(tokenData)) {
@@ -217,6 +218,7 @@ export class UserAuthService {
       if (!payloadParse) {
         throw new AppError(ErrorResponseData.UNAUTHORIZED);
       }
+      await this.redis.hincrby(`refreshToken:${payloadParse.id}`, refreshToken, 1);
 
       const payload = {
         id: payloadParse.id,
@@ -228,6 +230,7 @@ export class UserAuthService {
         accessToken: this.tokenAuthService.signAccessToken(payload),
         refreshToken: this.tokenAuthService.signRefreshToken(payload),
       };
+
       await this.saveRefreshToken(payload.id, data.refreshToken);
       return data;
     } else if (Number(tokenData)) {
