@@ -64,7 +64,18 @@ async function bootstrap() {
       },
       'access-token',
     )
+    .addCookieAuth(
+      'refreshToken',
+      {
+        type: 'http',
+        in: 'Header',
+        scheme: 'Bearer',
+      },
+      'refresh-token',
+    )
+
     .setVersion('1.0')
+
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);

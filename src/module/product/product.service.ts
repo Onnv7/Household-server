@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { CreateProductRequest } from './payload/product.request';
+import { CreateProductRequest, UpdateProductRequest } from './payload/product.request';
 import { CloudinaryService } from '../../service/cloudinary.service';
 import { CloudinaryConstant } from '../../constant/cloudinary.constant';
 import { AppError } from '../../common/model/response-api';
@@ -17,14 +17,17 @@ import {
   GetProductVisibleListByCategory,
 } from './payload/product.response';
 import { paginate } from 'nestjs-typeorm-paginate';
-import { FindManyOptions, Like, Not, Transaction } from 'typeorm';
+import { FindManyOptions, Like, Not } from 'typeorm';
 import { Transactional } from 'typeorm-transactional';
-import { OrderType, ProductStatus, SortType } from '../../common/enum';
+import { ProductStatus, SortType } from '../../common/enum';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class ProductService {
   private readonly logger = new Logger(ProductService.name);
   constructor(
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
     private readonly cloudinaryService: CloudinaryService,
     private readonly categoryRepository: CategoryRepository,
     private readonly productRepository: ProductRepository,
@@ -35,7 +38,7 @@ export class ProductService {
   }
   async createProduct(body: CreateProductRequest): Promise<void> {
     let product = new ProductEntity();
-    this.logger.debug(body.productSizeList);
+
     if (body.productSizeList) {
       let productPrice = ProductService.getMinPrice(body.productSizeList.map((size) => size.price));
       product.price = productPrice;
@@ -72,6 +75,55 @@ export class ProductService {
     } catch (err) {
       throw new AppError(ErrorResponseData.CLOUDINARY_ERROR);
     }
+    await this.productRepository.save(product);
+  }
+
+  async updateProduct(id: number, body: UpdateProductRequest): Promise<void> {
+    let product = await this.productRepository.findOneBy({ id });
+    if (!product) {
+      throw new AppError(ErrorResponseData.PRODUCT_NOT_FOUND);
+    }
+
+    if (body.productSizeList) {
+      let productPrice = ProductService.getMinPrice(body.productSizeList.map((size) => size.price));
+      product.price = productPrice;
+    } else {
+      if (!body.price) {
+        throw new AppError(ErrorResponseData.DATA_SEND_INVALID);
+      }
+      product.price = body.price;
+    }
+
+    const categoryEntity = await this.categoryRepository.findOneBy({ id: body.categoryId }).then((category) => {
+      if (category) {
+        return category;
+      }
+      throw new AppError(ErrorResponseData.CATEGORY_NOT_FOUND);
+    });
+
+    product.category = categoryEntity;
+    product.name = body.name;
+    product.description = body.description;
+    product.status = body.status;
+    product.productSKUList = body.productSizeList as ProductSKUEntity[];
+
+    console.log('🚀 ~ ProductService ~ updateProduct ~ body.imageList:', body.imageList);
+    if (body.imageList) {
+      try {
+        for (const image of body.imageList) {
+          const imageUploaded = await this.cloudinaryService.uploadFile(image, CloudinaryConstant.PRODUCT_PATH);
+          const productImage: ProductImageEntity = {
+            id: imageUploaded.public_id,
+            imageUrl: imageUploaded.url,
+            product: product,
+          };
+          product.productImageList = [...(product.productImageList ?? []), productImage];
+        }
+      } catch (err) {
+        throw new AppError(ErrorResponseData.CLOUDINARY_ERROR);
+      }
+    }
+
     await this.productRepository.save(product);
   }
 

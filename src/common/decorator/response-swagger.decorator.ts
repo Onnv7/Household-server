@@ -1,14 +1,6 @@
-import { HttpCode, HttpStatus, Type, applyDecorators } from '@nestjs/common';
-import {
-  ApiExtraModels,
-  ApiOkResponse,
-  ApiOperation,
-  ApiResponse,
-  getSchemaPath,
-} from '@nestjs/swagger';
+import { HttpCode, Type, applyDecorators } from '@nestjs/common';
+import { ApiExtraModels, ApiOperation, ApiResponse, getSchemaPath } from '@nestjs/swagger';
 import { ResponseAPI } from '../model/response-api';
-import { Hello } from '../../module/user-auth/payload/user-auth.response';
-import { timestamp } from 'rxjs';
 
 function getSchemaOptions(dataType: any): any {
   if (Array.isArray(dataType)) {
@@ -55,10 +47,7 @@ export const ApiResponseCustom = ({
     };
   } else {
     const schemaOptions = getSchemaOptions(dataType);
-    apiExtraModels = [
-      ResponseAPI,
-      Array.isArray(dataType) ? dataType[0] : dataType,
-    ];
+    apiExtraModels = [ResponseAPI, Array.isArray(dataType) ? dataType[0] : dataType];
     apiResponse = {
       status,
       schema: {

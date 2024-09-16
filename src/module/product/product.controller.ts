@@ -1,9 +1,21 @@
-import { Body, Controller, Delete, Get, Param, ParseEnumPipe, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  ParseEnumPipe,
+  Post,
+  Put,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ResponseAPI } from '../../common/model/response-api';
 import { ResponseMessage } from '../../constant/response.constant';
 import { ApiConsumes, ApiTags } from '@nestjs/swagger';
-import { CreateProductRequest } from './payload/product.request';
+import { CreateProductRequest, UpdateProductRequest } from './payload/product.request';
 import { ApiResponseCustom } from '../../common/decorator/response-swagger.decorator';
 import { FormDataRequest, MemoryStoredFile } from 'nestjs-form-data';
 import { HasAuthorize } from '../../common/decorator/role.decorator';
@@ -17,6 +29,7 @@ import {
 } from './payload/product.response';
 import { ApiQueryURL } from '../../common/decorator/query-swagger.decorator';
 import { BaseController } from '../../BaseController';
+import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 @ApiTags('PRODUCT')
 @Controller('product')
@@ -37,6 +50,20 @@ export class ProductController extends BaseController {
   async createProduct(@Body() body: CreateProductRequest): Promise<ResponseAPI<void>> {
     await this.productService.createProduct(body);
     return { message: ResponseMessage.CREATE };
+  }
+
+  @ApiResponseCustom({
+    dataType: null,
+    status: 201,
+    summary: 'Update a product by id',
+  })
+  @ApiConsumes('multipart/form-data')
+  @FormDataRequest({ storage: MemoryStoredFile })
+  @Put('/:id/update')
+  @HasAuthorize([Role.ROLE_ADMIN])
+  async updateProduct(@Param('id') id: number, @Body() body: UpdateProductRequest): Promise<ResponseAPI<void>> {
+    await this.productService.updateProduct(id, body);
+    return { message: ResponseMessage.UPDATE };
   }
 
   @ApiResponseCustom({ dataType: GetProductList, status: 200, summary: 'Get product list' })
@@ -65,6 +92,7 @@ export class ProductController extends BaseController {
     { name: 'sort', enum: SortType },
   ])
   @Get('visible')
+  @UseInterceptors(CacheInterceptor)
   async getProductVisibleList(
     @Query('page') page: number,
     @Query('size') size: number,
@@ -94,6 +122,7 @@ export class ProductController extends BaseController {
 
   @ApiResponseCustom({ dataType: GetProductVisible, status: 200, summary: 'Get product visible by id' })
   @Get(':productId/visible')
+  @UseInterceptors(CacheInterceptor)
   async getProductVisible(@Param('productId') productId: number): Promise<ResponseAPI<GetProductVisible>> {
     const data = await this.productService.getProductVisible(productId);
     return { data: data, message: ResponseMessage.GET };

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, Param, Patch, Post, Headers, Res } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCookieAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import {
   AuthGoogleRequest,
   GoogleAuthHeaders,
@@ -103,6 +103,7 @@ export class UserAuthController extends BaseController {
 
   @Get('/google-auth')
   @ApiResponseCustom({
+    dataType: LoginUserResponse,
     status: 200,
     summary: 'Authenticate by google',
   })
@@ -122,6 +123,12 @@ export class UserAuthController extends BaseController {
   }
 
   @Get('/refresh-token')
+  @ApiResponseCustom({
+    dataType: RefreshTokenResponse,
+    status: 200,
+    summary: 'Refresh token',
+  })
+  @ApiCookieAuth('refresh-token')
   async refreshToken(
     @Cookies('refreshToken') refreshToken: string,
     @Res({ passthrough: true }) res: Response,

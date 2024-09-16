@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { ProductEntity } from './product.entity';
 
-@Entity({ name: 'product_size' })
+@Entity({ name: 'product_sku' })
 export class ProductSKUEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'sku' })
+  @Column({ name: 'sku', unique: true })
   sku: string;
 
   @Column({ name: 'name' })

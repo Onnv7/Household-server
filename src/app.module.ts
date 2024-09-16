@@ -46,7 +46,13 @@ import { AuthContextService } from './service/auth-context.service';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import RedisConfig from './config/redis.config';
 import { TokenAuthService } from './service/token-auth/token-auth.service';
-
+import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
+import { env } from './config/env-configuration.config';
+import type { RedisClientOptions } from 'redis';
+import { redisStore } from 'cache-manager-redis-yet';
+import { CacheConfig } from './config/cache.config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ProductSubscriber } from './entity/subcriber/product.subcriber';
 const entityList = [
   MerchantEntity,
   UserEntity,
@@ -78,6 +84,7 @@ const repositoryList = [
     JwtModule.registerAsync(jwtConfigAsync),
     TypeOrmModule.forFeature(entityList),
     MailerModule.forRootAsync(mailerAsyncOptions),
+    CacheModule.registerAsync(CacheConfig.getCacheConfigAsync()),
     NestjsFormDataModule.config({ storage: MemoryStoredFile }),
     UserAuthModule,
     UserModule,
@@ -99,6 +106,7 @@ const repositoryList = [
     AddressService,
     AuthContextService,
     TokenAuthService,
+    ProductSubscriber,
   ],
   exports: [
     JwtModule,

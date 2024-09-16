@@ -16,7 +16,7 @@ export default class TypeOrmConfig {
       autoLoadEntities: true,
       synchronize: true,
       // logging: true,
-      dropSchema: false,
+      dropSchema: true,
     };
   }
 }

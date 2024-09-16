@@ -1,6 +1,5 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
-import { SortType } from '../enum';
 import { SwaggerEnumType } from '@nestjs/swagger/dist/types/swagger-enum.type';
 
 interface IQuery {
