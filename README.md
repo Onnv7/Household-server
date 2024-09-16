@@ -22,52 +22,12 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### INTRODUCTION
+- This repo is built using NodeJS, NestJS, TypeORM, Redis, Postgres, JWT
+- The purpose is to build an api server to process data for a website selling household appliances.
+### INSTALLATION 
+1.  `git clone https://github.com/Onnv7/Household-server.git`
+2. Launch docker-compose.yml to create services to be integrated into the project like postgres, redis.
+3. Create .env file and fill in configuration parameters like .env.example file
+4. Open terminal and run `npm install` command to install libraries, run `npm run start:dev` command to launch the project.
+5. Go to http://localhost:8000/swagger to view API documentation page.
