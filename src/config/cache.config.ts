@@ -1,5 +1,6 @@
 import { CacheModuleAsyncOptions, CacheOptions } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
+import { env } from './env-configuration.config';
 
 export class CacheConfig {
   static getCacheConfigAsync(): CacheModuleAsyncOptions {
@@ -12,8 +13,8 @@ export class CacheConfig {
     return {
       store: await redisStore({
         socket: {
-          host: 'localhost',
-          port: 6379,
+          host: env.REDIS_HOST,
+          port: env.REDIS_PORT,
         },
       }),
     };
